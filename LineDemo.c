@@ -21,15 +21,15 @@
  * SOFTWARE.
  **/
 
-#include "LineDemo.h"
+#include "./LineDemo.h"
 
 #include <time.h>
 #include <stdlib.h>
 #include <assert.h>
 #include <stdio.h>
 
-#include "GraphicStuff.h"
-#include "Line.h"
+#include "./GraphicStuff.h"
+#include "./Line.h"
 
 LineDemo* LineDemo_new() {
   LineDemo* lineDemo = malloc(sizeof(LineDemo));

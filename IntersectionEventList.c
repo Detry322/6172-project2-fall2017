@@ -20,7 +20,7 @@
  * SOFTWARE.
  **/
 
-#include "IntersectionEventList.h"
+#include "./IntersectionEventList.h"
 
 #include <assert.h>
 #include <stdlib.h>

@@ -76,6 +76,10 @@ all:		$(PRODUCT)
 # How to build for profiling
 prof:		$(PROFILE_PRODUCT)
 
+lint:
+	python clint.py *.h *.c
+
+
 # How to clean up
 clean:
 	$(RM) $(PRODUCT) $(PROFILE_PRODUCT) *.o *.out

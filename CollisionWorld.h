@@ -24,8 +24,8 @@
 #ifndef COLLISIONWORLD_H_
 #define COLLISIONWORLD_H_
 
-#include "Line.h"
-#include "IntersectionDetection.h"
+#include "./Line.h"
+#include "./IntersectionDetection.h"
 
 struct CollisionWorld {
   // Time step used for simulation

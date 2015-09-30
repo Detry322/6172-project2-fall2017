@@ -21,16 +21,16 @@
  * SOFTWARE. 
  **/
 
-#include "CollisionWorld.h"
+#include "./CollisionWorld.h"
 
 #include <stdlib.h>
 #include <math.h>
 #include <assert.h>
 #include <stdio.h>
 
-#include "IntersectionDetection.h"
-#include "IntersectionEventList.h"
-#include "Line.h"
+#include "./IntersectionDetection.h"
+#include "./IntersectionEventList.h"
+#include "./Line.h"
 
 CollisionWorld* CollisionWorld_new(const unsigned int capacity) {
   assert(capacity > 0);

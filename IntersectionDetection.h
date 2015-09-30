@@ -23,8 +23,8 @@
 #ifndef INTERSECTIONDETECTION_H_
 #define INTERSECTIONDETECTION_H_
 
-#include "Line.h"
-#include "Vec.h"
+#include "./Line.h"
+#include "./Vec.h"
 
 typedef enum {
   NO_INTERSECTION,

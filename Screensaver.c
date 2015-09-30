@@ -24,14 +24,14 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-#include "fasttime.h"
-#include "Line.h"
-#include "LineDemo.h"
+#include "./fasttime.h"
+#include "./Line.h"
+#include "./LineDemo.h"
 
 // The PROFILE_BUILD preprocessor define is used to indicate we are building for
 // profiling, so don't include any graphics or Cilk functions.
 #ifndef PROFILE_BUILD
-#include "GraphicStuff.h"
+#include "./GraphicStuff.h"
 #endif
 
 // For non-graphic version
