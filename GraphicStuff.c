@@ -31,6 +31,8 @@
 
 static LineDemo *gLineDemo = NULL;
 XSegment *segments = NULL;
+XSegment *gray_segments = NULL;
+
 
 Display *display;
 
@@ -73,33 +75,40 @@ static void drawLineSegments(Display *display, Drawable drawable) {
   red = XCreateGC(display, window, GCForeground, &gcval);
 
   nsegments = LineDemo_getNumOfLines(gLineDemo);
-  if (segments == NULL) {
+  if (segments == NULL || gray_segments == NULL) {
     segments = malloc(nsegments * sizeof(XSegment));
+    gray_segments = malloc(nsegments * sizeof(XSegment));
   }
   XClearWindow(display, window);
+  int red_segments_count = 0;
+  int gray_segments_count = 0;
   for (unsigned int i = 0; i < nsegments; i++) {
     line = LineDemo_getLine(gLineDemo, i);
 
     // Convert box coordinates to window coordinates.
     boxToWindow(&px1, &py1, line->p1.x, line->p1.y);
     boxToWindow(&px2, &py2, line->p2.x, line->p2.y);
-
-    // Convert doubles to short ints and store into segments.
-    segments[0].x1 = (int16_t) px1;
-    segments[0].y1 = (int16_t) py1;
-    segments[0].x2 = (int16_t) px2;
-    segments[0].y2 = (int16_t) py2;
-
     // Set line color.
     switch (line->color) {
       case RED:
-        XDrawSegments(display, drawable, red, segments, 1);
+        // Convert doubles to short ints and store into segments.
+        segments[red_segments_count].x1 = (int16_t) px1;
+        segments[red_segments_count].y1 = (int16_t) py1;
+        segments[red_segments_count].x2 = (int16_t) px2;
+        segments[red_segments_count].y2 = (int16_t) py2;
+        red_segments_count++;
         break;
       case GRAY:
-        XDrawSegments(display, drawable, gray, segments, 1);
+        gray_segments[gray_segments_count].x1 = (int16_t) px1;
+        gray_segments[gray_segments_count].y1 = (int16_t) py1;
+        gray_segments[gray_segments_count].x2 = (int16_t) px2;
+        gray_segments[gray_segments_count].y2 = (int16_t) py2;
+        gray_segments_count++;
         break;
     }
   }
+  XDrawSegments(display, drawable, red, segments, red_segments_count);
+  XDrawSegments(display, drawable, gray, gray_segments, gray_segments_count);
   XSync(display, 0);
 }
 
@@ -236,5 +245,8 @@ void graphicMain(int argc, char *argv[], LineDemo *lineDemo, bool imageOnlyFlag)
 
   if (segments != NULL) {
     free(segments);
+  }
+  if (gray_segments != NULL) {
+    free(gray_segments);
   }
 }
