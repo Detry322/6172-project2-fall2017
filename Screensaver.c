@@ -33,6 +33,8 @@
 #ifndef PROFILE_BUILD
 #include "./GraphicStuff.h"
 #endif
+static char* DEFAULT_INPUT_FILE_PATH = "line.in";
+static char* input_file_path;
 
 // For non-graphic version
 void lineMain(LineDemo *lineDemo) {
@@ -81,19 +83,27 @@ int main(int argc, char *argv[]) {
     }
 
     // Check to make sure number of arguments is correct.
-    if (remaining_args != 1) {
-      printf("Usage: %s [-g] [-i] <numFrames>\n", argv[0]);
+    if (remaining_args < 1) {
+      printf("Usage: %s [-g] [-i] <numFrames> <optional input_file>\n", argv[0]);
       printf("  -g : show graphics\n");
       printf("  -i : show first image only (ignore numFrames)\n");
       exit(-1);
     }
 
     numFrames = atoi(argv[1]);
+    if (remaining_args > 1) {
+      input_file_path = argv[2];
+    } else {
+      input_file_path = DEFAULT_INPUT_FILE_PATH;
+    }
+
+    printf("Input file path is: %s\n", input_file_path);
     printf("Number of frames = %u\n", numFrames);
   }
 
   // Create and initialize the Line simulation environment.
   LineDemo *lineDemo = LineDemo_new();
+  LineDemo_setInputFile(input_file_path);
   LineDemo_initLine(lineDemo);
   LineDemo_setNumFrames(lineDemo, numFrames);
 

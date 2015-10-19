@@ -66,4 +66,6 @@ unsigned int LineDemo_getNumLineLineCollisions(LineDemo* lineDemo);
 // Line simulation update function.
 bool LineDemo_update(LineDemo* lineDemo);
 
+void LineDemo_setInputFile(char* input_file_path);
+
 #endif  // LINEDEMO_H_

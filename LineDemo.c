@@ -31,6 +31,12 @@
 #include "./GraphicStuff.h"
 #include "./Line.h"
 
+static char* LineDemo_input_file_path;
+
+void LineDemo_setInputFile(char* input_file_path) {
+  LineDemo_input_file_path = input_file_path;
+}
+
 LineDemo* LineDemo_new() {
   LineDemo* lineDemo = malloc(sizeof(LineDemo));
   if (lineDemo == NULL) {
@@ -60,7 +66,7 @@ void LineDemo_createLines(LineDemo* lineDemo) {
   window_dimension vy;
   int isGray;
   FILE *fin;
-  fin = fopen("line.in", "r");
+  fin = fopen(LineDemo_input_file_path, "r");
   assert(fin != NULL);
 
   fscanf(fin, "%d\n", &numOfLines);
