@@ -67,7 +67,10 @@ void LineDemo_createLines(LineDemo* lineDemo) {
   int isGray;
   FILE *fin;
   fin = fopen(LineDemo_input_file_path, "r");
-  assert(fin != NULL);
+  if (fin == NULL) {
+    fprintf(stderr, "Input file not found (%s)\n", LineDemo_input_file_path);
+    exit(1);
+  }
 
   fscanf(fin, "%d\n", &numOfLines);
   lineDemo->collisionWorld = CollisionWorld_new(numOfLines);
