@@ -54,7 +54,7 @@ PROFILE_PRODUCT = $(PRODUCT:%=%.prof) #the product, instrumented for gprof
 
 # What we're building with
 CXX = clang
-CXXFLAGS = -std=gnu99 -Wall -fcilkplus
+CXXFLAGS = -std=gnu99 -Wall -ftapir
 LDFLAGS = -lrt -lm -lcilkrts
 
 
