@@ -53,7 +53,7 @@ PRODUCT = Screensaver
 PROFILE_PRODUCT = $(PRODUCT:%=%.prof) #the product, instrumented for gprof
 
 # What we're building with
-CXX = gcc
+CXX = clang
 CXXFLAGS = -std=gnu99 -Wall -fcilkplus
 LDFLAGS = -lrt -lm -lcilkrts
 
