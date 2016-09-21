@@ -51,7 +51,6 @@ int main(int argc, char *argv[]) {
 #ifndef PROFILE_BUILD
   bool graphicDemoFlag = false;
 #endif
-  bool imageOnlyFlag = false;
   unsigned int numFrames = 1;
   extern int optind;
 
@@ -63,43 +62,34 @@ int main(int argc, char *argv[]) {
         graphicDemoFlag = true;
 #endif
         break;
-      case 'i':
-        imageOnlyFlag = true;
-#ifndef PROFILE_BUILD
-        graphicDemoFlag = true;
-#endif
-        break;
       default:
         printf("Ignoring unrecognized option: %c\n", optchar);
         continue;
     }
   }
 
-  if (!imageOnlyFlag) {
-    // Shift remaining arguments over.
-    int remaining_args = argc - optind;
-    for (int i = 1; i <= remaining_args; i++) {
-      argv[i] = argv[i + optind - 1];
-    }
-
-    // Check to make sure number of arguments is correct.
-    if (remaining_args < 1) {
-      printf("Usage: %s [-g] [-i] <numFrames> <optional input_file>\n", argv[0]);
-      printf("  -g : show graphics\n");
-      printf("  -i : show first image only (ignore numFrames)\n");
-      exit(-1);
-    }
-
-    numFrames = atoi(argv[1]);
-    if (remaining_args > 1) {
-      input_file_path = argv[2];
-    } else {
-      input_file_path = DEFAULT_INPUT_FILE_PATH;
-    }
-
-    printf("Input file path is: %s\n", input_file_path);
-    printf("Number of frames = %u\n", numFrames);
+  // Shift remaining arguments over.
+  int remaining_args = argc - optind;
+  for (int i = 1; i <= remaining_args; i++) {
+    argv[i] = argv[i + optind - 1];
   }
+
+  // Check to make sure number of arguments is correct.
+  if (remaining_args < 1) {
+    printf("Usage: %s [-g] <numFrames> [inputfile]\n", argv[0]);
+    printf("  -g : show graphics\n");
+    exit(-1);
+  }
+
+  numFrames = atoi(argv[1]);
+  printf("Number of frames = %u\n", numFrames);
+
+  if (remaining_args > 1) {
+    input_file_path = argv[2];
+  } else {
+    input_file_path = DEFAULT_INPUT_FILE_PATH;
+  }
+  printf("Input file path is: %s\n", input_file_path);
 
   // Create and initialize the Line simulation environment.
   LineDemo *lineDemo = LineDemo_new();
@@ -112,7 +102,7 @@ int main(int argc, char *argv[]) {
 #ifndef PROFILE_BUILD
   // Run demo.
   if (graphicDemoFlag) {
-    graphicMain(argc, argv, lineDemo, imageOnlyFlag);
+    graphicMain(argc, argv, lineDemo, false);
   } else {
     lineMain(lineDemo);
   }
