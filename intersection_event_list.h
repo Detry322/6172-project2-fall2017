@@ -23,8 +23,8 @@
 #ifndef INTERSECTIONEVENTLIST_H_
 #define INTERSECTIONEVENTLIST_H_
 
-#include "./Line.h"
-#include "./IntersectionDetection.h"
+#include "./line.h"
+#include "./intersection_detection.h"
 
 struct IntersectionEventNode {
   // This IntersectionEventNode does not own these Line* lines.

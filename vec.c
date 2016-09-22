@@ -20,11 +20,11 @@
  * SOFTWARE.
  **/
 
-#include "./Vec.h"
+#include "./vec.h"
 
 #include <math.h>
 
-#include "./Line.h"
+#include "./line.h"
 
 Vec Vec_make(const vec_dimension x, const vec_dimension y) {
   Vec vector;

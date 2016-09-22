@@ -1,5 +1,5 @@
 /**
- * CollisionWorld.h -- detect and handle line segment intersections
+ * collision_world.h -- detect and handle line segment intersections
  * Copyright (c) 2012 the Massachusetts Institute of Technology
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,8 +24,8 @@
 #ifndef COLLISIONWORLD_H_
 #define COLLISIONWORLD_H_
 
-#include "./Line.h"
-#include "./IntersectionDetection.h"
+#include "./line.h"
+#include "./intersection_detection.h"
 
 struct CollisionWorld {
   // Time step used for simulation

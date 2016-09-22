@@ -1,4 +1,4 @@
-# Makefile for Screensaver
+# Makefile for screensaver
 # Copyright (c) 2012 the Massachusetts Institute of Technology
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -20,7 +20,7 @@
 # SOFTWARE.
 
 
-# This Makefile is set up to build Screensaver in one of two modes.
+# This Makefile is set up to build screensaver in one of two modes.
 # In debug mode, the C compiler does virtually no optimizations
 # (-O0) and embeds a bunch of debugging symbols to make work with GDB easier.
 # In release mode, the compiler will do every optimization it can (-O3) and keep
@@ -45,11 +45,11 @@
 
 # The sources we're building
 HEADERS = $(wildcard *.h)
-PRODUCT_SOURCES = $(filter-out GraphicStuff.c, $(wildcard *.c))
+PRODUCT_SOURCES = $(filter-out graphic_stuff.c, $(wildcard *.c))
 
 # What we're building
 PRODUCT_OBJECTS = $(PRODUCT_SOURCES:.c=.o)
-PRODUCT = Screensaver
+PRODUCT = screensaver
 PROFILE_PRODUCT = $(PRODUCT:%=%.prof) #the product, instrumented for gprof
 
 # What we're building with
@@ -91,8 +91,8 @@ clean:
 
 # How to link the product
 $(PRODUCT): LDFLAGS += -lXext -lX11
-$(PRODUCT):	$(PRODUCT_OBJECTS) GraphicStuff.o
-	$(CXX) $(LDFLAGS) $(EXTRA_LDFLAGS) -o $@ $(PRODUCT_OBJECTS) GraphicStuff.o
+$(PRODUCT):	$(PRODUCT_OBJECTS) graphic_stuff.o
+	$(CXX) $(LDFLAGS) $(EXTRA_LDFLAGS) -o $@ $(PRODUCT_OBJECTS) graphic_stuff.o
 
 # How to build the product, instrumented for profiling
 $(PROFILE_PRODUCT): CXXFLAGS += -DPROFILE_BUILD -pg

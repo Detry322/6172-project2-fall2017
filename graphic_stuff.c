@@ -20,14 +20,14 @@
  * SOFTWARE.
  **/
 
-#include "./GraphicStuff.h"
+#include "./graphic_stuff.h"
 
 #include <stdlib.h>
 #include <stdint.h>
 #include <stdio.h>
 
-#include "./Line.h"
-#include "./LineDemo.h"
+#include "./line.h"
+#include "./line_demo.h"
 
 static LineDemo *gLineDemo = NULL;
 XSegment *segments = NULL;

@@ -21,15 +21,15 @@
  * SOFTWARE.
  **/
 
-#include "./LineDemo.h"
+#include "./line_demo.h"
 
 #include <time.h>
 #include <stdlib.h>
 #include <assert.h>
 #include <stdio.h>
 
-#include "./GraphicStuff.h"
-#include "./Line.h"
+#include "./graphic_stuff.h"
+#include "./line.h"
 
 static char* LineDemo_input_file_path;
 

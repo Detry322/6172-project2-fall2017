@@ -25,13 +25,13 @@
 #include <unistd.h>
 
 #include "./fasttime.h"
-#include "./Line.h"
-#include "./LineDemo.h"
+#include "./line.h"
+#include "./line_demo.h"
 
 // The PROFILE_BUILD preprocessor define is used to indicate we are building for
 // profiling, so don't include any graphics or Cilk functions.
 #ifndef PROFILE_BUILD
-#include "./GraphicStuff.h"
+#include "./graphic_stuff.h"
 #endif
 static char* DEFAULT_INPUT_FILE_PATH = "input/mit.in";
 static char* input_file_path;

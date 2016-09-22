@@ -24,8 +24,8 @@
 #ifndef LINE_H_
 #define LINE_H_
 
-#include "./GraphicStuff.h"
-#include "./Vec.h"
+#include "./graphic_stuff.h"
+#include "./vec.h"
 
 // Lines' coordinates are stored in a box with these bounds
 // We choose box coordinates in [.5, 1) to simulate fixed
