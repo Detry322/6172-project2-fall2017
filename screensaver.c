@@ -23,10 +23,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <cilk/cilk.h>
+
 
 #include "./fasttime.h"
 #include "./line.h"
 #include "./line_demo.h"
+#include "./cilktool.h"
 
 // The PROFILE_BUILD preprocessor define is used to indicate we are building for
 // profiling, so don't include any graphics or Cilk functions.
@@ -124,6 +127,9 @@ int main(int argc, char *argv[]) {
 
   // delete objects
   LineDemo_delete(lineDemo);
+#ifdef CILKSCALE
+  print_total();
+#endif
 
   return 0;
 }

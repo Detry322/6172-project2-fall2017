@@ -57,6 +57,7 @@ CXX = clang
 CXXFLAGS = -std=gnu99 -Wall -ftapir
 LDFLAGS = -lrt -lm -lcilkrts
 
+include ./cilkutils.mk
 
 # Determine which profile--debug or release--we should build against, and set
 # CFLAGS appropriately.
